@@ -21,11 +21,13 @@ public class Pres2 {
 
         String metierClassName= scanner.nextLine();
         Class cMetier =Class.forName(metierClassName);
-        IMetier metier =(IMetier) cMetier.getConstructor().newInstance();
+       // IMetier metier =(IMetier) cMetier.getConstructor().newInstance();
+        // injection par constructor
+        IMetier metier =(IMetier) cMetier.getConstructor(IDao.class).newInstance(dao);
 
         /* metier.setDao(dao); statique */
-        Method method=cMetier.getMethod("setDao", IDao.class);
-        method.invoke(metier, dao); //injection des dépendances dynamiques
+       // Method method=cMetier.getMethod("setDao", IDao.class);
+       // method.invoke(metier, dao); //injection des dépendances dynamiques
         System.out.println("Resultat=>"+metier.calcul());
 
     }
