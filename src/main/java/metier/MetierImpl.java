@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 @Service()
 public class MetierImpl implements IMetier {
 
-
-
    // @Autowired le constructor le remplace
    @Qualifier("VWS")
     private IDao dao; //couplage faible
